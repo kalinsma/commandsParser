@@ -1,9 +1,9 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import parser.algorithm.Command;
+import parser.Command;
+import parser.fixtures.OutputListWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,22 +16,25 @@ class CCTest {
     public void shouldReturnCamelCaseString() {
         //given
         Command command = Command.of("CC","abc def ghi");
+        OutputListWriter outputWriter = new OutputListWriter();
         //when
-        String output = cc.process(command);
+        cc.process(command, outputWriter);
         //then
-        log.debug(output);
-        assertThat(output).isEqualTo("abcDefGhi");
+        log.debug(outputWriter.getResult());
+        assertThat(outputWriter.getResult()).isEqualTo("abcDefGhi");
     }
 
     @Test
     public void shouldReturnCamelCaseString_whenUpperLettersAreGiven() {
         //given
         Command command = Command.of("CC","abc dEf gHi");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = cc.process(command);
+        cc.process(command, outputWriter);
         //then
-        log.debug(output);
-        assertThat(output).isEqualTo("abcDefGhi");
+        log.debug(outputWriter.getResult());
+        assertThat(outputWriter.getResult()).isEqualTo("abcDefGhi");
     }
 
 
@@ -39,22 +42,26 @@ class CCTest {
     public void shouldReturnCamelCaseString_whenManyWhiteCharsAreGiven() {
         //given
         Command command = Command.of("CC","     abc       dEf    ghi");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = cc.process(command);
+        cc.process(command, outputWriter);
         //then
-        log.debug(output);
-        assertThat(output).isEqualTo("abcDefGhi");
+        log.debug(outputWriter.getResult());
+        assertThat(outputWriter.getResult()).isEqualTo("abcDefGhi");
     }
 
     @Test
     public void shouldReturnEmptyString_whenEmptyStringIsGiven() {
         //given
         Command command = Command.of("CC","");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = cc.process(command);
+        cc.process(command, outputWriter);
         //then
-        log.debug(output);
-        assertThat(output).isEqualTo("");
+        log.debug(outputWriter.getResult());
+        assertThat(outputWriter.getResult()).isEqualTo("");
     }
 
 

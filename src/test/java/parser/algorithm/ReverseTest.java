@@ -1,11 +1,10 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import parser.algorithm.Command;
+import parser.Command;
+import parser.fixtures.OutputListWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ReverseTest {
     private Reverse reverse = new Reverse();
@@ -14,20 +13,24 @@ class ReverseTest {
     public void shouldReturnReversedWords() {
         //given
         Command command = Command.of("REVERSE", "abcd  uu12s");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = reverse.process(command);
+        reverse.process(command, outputWriter);
         //then
-        assertThat(output).isEqualTo("dcba s21uu");
+        assertThat(outputWriter.getResult()).isEqualTo("dcba s21uu");
     }
 
     @Test
     public void shouldReturnEmptyOutput_whenInputIsEmpty() {
         //given
         Command command = Command.of("REVERSE", "");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = reverse.process(command);
+        reverse.process(command, outputWriter);
         //then
-        assertThat(output).isEqualTo("");
+        assertThat(outputWriter.getResult()).isEqualTo("");
     }
 
 }

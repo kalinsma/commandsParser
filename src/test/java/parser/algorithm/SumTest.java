@@ -1,10 +1,11 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
 import org.junit.jupiter.api.Test;
-import parser.algorithm.Command;
+import parser.Command;
+import parser.fixtures.OutputListWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.offset;
 
 class SumTest {
     private Sum sum = new Sum();
@@ -13,20 +14,24 @@ class SumTest {
     public void shouldReturnSum() {
         //given
         Command command = Command.of("SUM", "1 2 3");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = sum.process(command);
+        sum.process(command, outputWriter);
         //then
-        assertThat(output).isEqualTo("6");
+        assertThat(outputWriter.getResult()).isEqualTo("6");
     }
 
     @Test
     public void shouldReturnZero_whenEmptyInput() {
         //given
         Command command = Command.of("SUM", "");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = sum.process(command);
+        sum.process(command, outputWriter);
         //then
-        assertThat(output).isEqualTo("0");
+        assertThat(outputWriter.getResult()).isEqualTo("0");
     }
 
 }

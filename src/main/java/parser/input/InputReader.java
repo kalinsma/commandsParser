@@ -1,6 +1,6 @@
-package parser.algorithm.input;
+package parser.input;
 
-import parser.algorithm.Command;
+import parser.Command;
 
 import java.util.stream.Stream;
 

@@ -1,14 +1,12 @@
-package parser.algorithm.input;
+package parser.input;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import parser.algorithm.Command;
+import parser.Command;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileInputReaderTest {
     

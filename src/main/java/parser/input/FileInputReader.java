@@ -1,8 +1,8 @@
-package parser.algorithm.input;
+package parser.input;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import parser.algorithm.Command;
+import parser.Command;
 
 import java.io.IOException;
 import java.nio.file.Files;

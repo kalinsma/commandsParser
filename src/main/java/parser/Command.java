@@ -1,4 +1,4 @@
-package parser.algorithm;
+package parser;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

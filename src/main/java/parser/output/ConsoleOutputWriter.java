@@ -1,4 +1,4 @@
-package parser.algorithm.output;
+package parser.output;
 
 import lombok.extern.slf4j.Slf4j;
 

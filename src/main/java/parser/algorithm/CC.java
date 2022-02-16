@@ -1,22 +1,19 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
-import lombok.NoArgsConstructor;
-import parser.algorithm.Command;
+import parser.Command;
 
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 
-public class CC implements CommandProcessorStrategy{
-
-    @Override
-    public String getCommandName() {
-        return "CC";
+public class CC extends AbstractAlgorithm {
+    public CC() {
+        super("CC");
     }
 
     @Override
-    public String process(Command command) {
+    protected String getAlgorithmOutput(Command command) {
         if(Objects.isNull(command.getData())) {
             return "";
         }
@@ -48,4 +45,5 @@ public class CC implements CommandProcessorStrategy{
         }
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
+
 }

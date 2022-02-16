@@ -1,18 +1,18 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
-import parser.algorithm.Command;
+import parser.Command;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class Reverse implements CommandProcessorStrategy {
-    @Override
-    public String getCommandName() {
-        return "REVERSE";
+public class Reverse extends AbstractAlgorithm {
+
+    public Reverse() {
+        super("REVERSE");
     }
 
     @Override
-    public String process(Command command) {
+    protected String getAlgorithmOutput(Command command) {
         return Arrays.stream(command.getData().split("\\s+"))
                 .map(StringBuffer::new)
                 .map(StringBuffer::reverse)

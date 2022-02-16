@@ -1,19 +1,17 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
-import parser.algorithm.Command;
+import parser.Command;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
-public class Sum implements CommandProcessorStrategy{
-    @Override
-    public String getCommandName() {
-        return "SUM";
+public class Sum extends AbstractAlgorithm {
+
+    public Sum() {
+        super("SUM");
     }
 
     @Override
-    public String process(Command command) {
+    protected String getAlgorithmOutput(Command command) {
         if(command.getData().isBlank()) {
             return "0";
         }

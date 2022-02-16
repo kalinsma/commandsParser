@@ -1,11 +1,11 @@
-package parser.algorithm.strategy;
+package parser.algorithm;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import parser.algorithm.Command;
+import parser.Command;
+import parser.fixtures.OutputListWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 class OrderTest {
@@ -16,22 +16,26 @@ class OrderTest {
     public void shouldReturnOrderedStrings() {
         //given
         Command command = Command.of("ORDER", "bd cb ac");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = order.process(command);
+        order.process(command, outputWriter);
         //then
-        log.debug(output);
-        assertThat(output).isEqualTo("ac bd cb");
+        log.debug(outputWriter.getResult());
+        assertThat(outputWriter.getResult()).isEqualTo("ac bd cb");
     }
 
     @Test
     public void shouldReturnEmptyOutput_whenEmptyInputIsGiven() {
         //given
         Command command = Command.of("ORDER", "");
+        OutputListWriter outputWriter = new OutputListWriter();
+
         //when
-        String output = order.process(command);
+        order.process(command, outputWriter);
         //then
-        log.debug(output);
-        assertThat(output).isEqualTo("");
+        log.debug(outputWriter.getResult());
+        assertThat(outputWriter.getResult()).isEqualTo("");
     }
 
 }

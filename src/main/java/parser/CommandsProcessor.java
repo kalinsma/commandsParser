@@ -1,12 +1,12 @@
-package parser.algorithm;
+package parser;
 
 import lombok.Builder;
 import lombok.NonNull;
 import lombok.Singular;
 import lombok.extern.slf4j.Slf4j;
-import parser.algorithm.input.InputReader;
-import parser.algorithm.output.OutputWriter;
-import parser.algorithm.strategy.CommandProcessorStrategy;
+import parser.algorithm.Algorithm;
+import parser.input.InputReader;
+import parser.output.OutputWriter;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class CommandsProcessor {
     @Singular
     @NonNull
-    private final List<CommandProcessorStrategy> commandsProcessors;
+    private final List<Algorithm> algorithms;
     @NonNull
     private final OutputWriter output;
     @NonNull
@@ -24,8 +24,13 @@ public class CommandsProcessor {
     public void process() {
 
         input.getCommandsStream()
-                .forEach();
-
+                .forEach(
+                        command -> {
+                            algorithms.stream()
+                                    .forEach(a -> a.process(command, output));
+                        }
+                );
     }
+
 
 }
