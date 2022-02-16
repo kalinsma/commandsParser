@@ -23,7 +23,7 @@ public class OutputListWriter implements OutputWriter {
     }
 
     public List<String> getOutputs() {
-        return outputs;
+        return Collections.unmodifiableList(outputs);
     }
 
     public String getResult() {

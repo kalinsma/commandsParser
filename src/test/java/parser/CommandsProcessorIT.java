@@ -14,8 +14,9 @@ class CommandsProcessorIT {
 
     @Test
     public void shouldProcessFile() {
-        OutputListWriter writer = new OutputListWriter();
         //given
+        OutputListWriter writer = new OutputListWriter();
+
         CommandsProcessor processor = CommandsProcessor.builder()
                 .input(FileInputReader.of("src/test/resources/test1.input"))
                 .output(writer)
